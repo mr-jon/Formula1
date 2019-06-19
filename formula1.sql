@@ -1,220 +1,141 @@
--- phpMyAdmin SQL Dump
--- version 4.8.5
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: 13-Jun-2019 às 00:50
--- Versão do servidor: 10.1.38-MariaDB
--- versão do PHP: 7.3.4
+/*
+ Navicat Premium Data Transfer
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+ Source Server         : MAMP
+ Source Server Type    : MySQL
+ Source Server Version : 50725
+ Source Host           : localhost:8889
+ Source Schema         : formula1
 
+ Target Server Type    : MySQL
+ Target Server Version : 50725
+ File Encoding         : 65001
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+ Date: 19/06/2019 12:28:32
+*/
 
---
--- Database: `formula1`
---
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `usuario`
---
-
-CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `senha` varchar(32) NOT NULL,
-  `admin` char(1) NOT NULL DEFAULT 'N'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `admin`) VALUES
-(1, 'Jeffery', 'jeffery@email.com', 'senh@123', 'N'),
-(1, 'Leandro', 'leandro@email.com', 'senh@321', 'N'),
-(2, 'admin', 'admin@admin', 'senh@123', 'S');
-
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `equipe`
---
-
-CREATE TABLE `equipe` (
-  `codEquip` int(11) NOT NULL,
+-- ----------------------------
+-- Table structure for equipe
+-- ----------------------------
+DROP TABLE IF EXISTS `equipe`;
+CREATE TABLE `equipe`  (
+  `codEquip` int(11) NOT NULL AUTO_INCREMENT,
   `codPais` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`codEquip`) USING BTREE,
+  INDEX `pais_equipe_fk`(`codPais`) USING BTREE,
+  CONSTRAINT `pais_equipe_fk` FOREIGN KEY (`codPais`) REFERENCES `pais` (`codPais`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `gp`
---
-
-CREATE TABLE `gp` (
-  `codGp` int(11) NOT NULL,
-  `codPais` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `pais`
---
-
-CREATE TABLE `pais` (
-  `codPais` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `pais`
---
-
-INSERT INTO `pais` (`codPais`, `nome`) VALUES
-(1, 'Austrália'),
-(2, 'Bahrein'),
-(3, 'Brasil'),
-(4, 'Canadá');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `piloto`
---
-
-CREATE TABLE `piloto` (
-  `codPiloto` int(11) NOT NULL,
-  `codEquip` int(11) NOT NULL,
-  `codPais` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `pilotogp`
---
-
-CREATE TABLE `pilotogp` (
-  `codPiloto` int(11) NOT NULL,
-  `codEquip` int(11) NOT NULL,
-  `codGp` int(11) NOT NULL,
-  `pts` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `equipe`
---
-ALTER TABLE `equipe`
-  ADD PRIMARY KEY (`codEquip`),
-  ADD KEY `pais_equipe_fk` (`codPais`);
-
---
--- Indexes for table `gp`
---
-ALTER TABLE `gp`
-  ADD PRIMARY KEY (`codGp`),
-  ADD KEY `pais_gp_fk` (`codPais`);
-
---
--- Indexes for table `pais`
---
-ALTER TABLE `pais`
-  ADD PRIMARY KEY (`codPais`);
-
---
--- Indexes for table `piloto`
---
-ALTER TABLE `piloto`
-  ADD PRIMARY KEY (`codPiloto`,`codEquip`),
-  ADD KEY `pais_piloto_fk` (`codPais`),
-  ADD KEY `equipe_piloto_fk` (`codEquip`);
-
---
--- Indexes for table `pilotogp`
---
-ALTER TABLE `pilotogp`
-  ADD PRIMARY KEY (`codPiloto`,`codEquip`,`codGp`),
-  ADD KEY `gp_pilotogp_fk` (`codGp`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `equipe`
---
-ALTER TABLE `equipe`
-  MODIFY `codEquip` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `gp`
---
-ALTER TABLE `gp`
-  MODIFY `codGp` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pais`
---
-ALTER TABLE `pais`
-  MODIFY `codPais` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `piloto`
---
-ALTER TABLE `piloto`
-  MODIFY `codPiloto` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `equipe`
---
-ALTER TABLE `equipe`
-  ADD CONSTRAINT `pais_equipe_fk` FOREIGN KEY (`codPais`) REFERENCES `pais` (`codPais`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `gp`
---
-ALTER TABLE `gp`
-  ADD CONSTRAINT `pais_gp_fk` FOREIGN KEY (`codPais`) REFERENCES `pais` (`codPais`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `piloto`
---
-ALTER TABLE `piloto`
-  ADD CONSTRAINT `equipe_piloto_fk` FOREIGN KEY (`codEquip`) REFERENCES `equipe` (`codEquip`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `pais_piloto_fk` FOREIGN KEY (`codPais`) REFERENCES `pais` (`codPais`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `pilotogp`
---
-ALTER TABLE `pilotogp`
-  ADD CONSTRAINT `gp_pilotogp_fk` FOREIGN KEY (`codGp`) REFERENCES `gp` (`codGp`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `piloto_pilotogp_fk` FOREIGN KEY (`codPiloto`,`codEquip`) REFERENCES `piloto` (`codPiloto`, `codEquip`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- ----------------------------
+-- Records of equipe
+-- ----------------------------
+BEGIN;
+INSERT INTO `equipe` VALUES (1, 1, 'Red Bull'), (2, 3, 'Mercedes');
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- ----------------------------
+-- Table structure for gp
+-- ----------------------------
+DROP TABLE IF EXISTS `gp`;
+CREATE TABLE `gp`  (
+  `codGp` int(11) NOT NULL AUTO_INCREMENT,
+  `codPais` int(11) NOT NULL,
+  `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`codGp`) USING BTREE,
+  INDEX `pais_gp_fk`(`codPais`) USING BTREE,
+  CONSTRAINT `pais_gp_fk` FOREIGN KEY (`codPais`) REFERENCES `pais` (`codPais`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of gp
+-- ----------------------------
+BEGIN;
+INSERT INTO `gp` VALUES (1, 1, 'GP Bahrein'), (2, 2, 'GP Austrália'), (3, 4, 'GP Monaco'), (4, 3, 'GP Interlagos');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for pais
+-- ----------------------------
+DROP TABLE IF EXISTS `pais`;
+CREATE TABLE `pais`  (
+  `codPais` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`codPais`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of pais
+-- ----------------------------
+BEGIN;
+INSERT INTO `pais` VALUES (1, 'Austrália'), (2, 'Bahrain'), (3, 'Brasil'), (4, 'Canadá');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for piloto
+-- ----------------------------
+DROP TABLE IF EXISTS `piloto`;
+CREATE TABLE `piloto`  (
+  `codPiloto` int(11) NOT NULL AUTO_INCREMENT,
+  `codEquip` int(11) NOT NULL,
+  `codPais` int(11) NOT NULL,
+  `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`codPiloto`, `codEquip`) USING BTREE,
+  INDEX `pais_piloto_fk`(`codPais`) USING BTREE,
+  INDEX `equipe_piloto_fk`(`codEquip`) USING BTREE,
+  CONSTRAINT `equipe_piloto_fk` FOREIGN KEY (`codEquip`) REFERENCES `equipe` (`codEquip`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `pais_piloto_fk` FOREIGN KEY (`codPais`) REFERENCES `pais` (`codPais`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of piloto
+-- ----------------------------
+BEGIN;
+INSERT INTO `piloto` VALUES (1, 2, 3, 'Felipe Massa'), (2, 1, 3, 'Ayrton Senna'), (3, 1, 1, 'Sergey Sirotkin');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for pilotogp
+-- ----------------------------
+DROP TABLE IF EXISTS `pilotogp`;
+CREATE TABLE `pilotogp`  (
+  `codPiloto` int(11) NOT NULL,
+  `codEquip` int(11) NOT NULL,
+  `codGp` int(11) NOT NULL,
+  `pts` int(11) NOT NULL,
+  PRIMARY KEY (`codPiloto`, `codEquip`, `codGp`) USING BTREE,
+  INDEX `gp_pilotogp_fk`(`codGp`) USING BTREE,
+  CONSTRAINT `gp_pilotogp_fk` FOREIGN KEY (`codGp`) REFERENCES `gp` (`codGp`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `piloto_pilotogp_fk` FOREIGN KEY (`codPiloto`, `codEquip`) REFERENCES `piloto` (`codPiloto`, `codEquip`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of pilotogp
+-- ----------------------------
+BEGIN;
+INSERT INTO `pilotogp` VALUES (1, 2, 4, 10), (2, 1, 2, 6), (2, 1, 4, 18), (3, 1, 4, 5);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for usuario
+-- ----------------------------
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE `usuario`  (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `senha` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `admin` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'N'
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+
+-- ----------------------------
+-- Records of usuario
+-- ----------------------------
+BEGIN;
+INSERT INTO `usuario` VALUES (1, 'Jeffery', 'jeffery@email.com', 'senh@123', 'N'), (1, 'Leandro', 'leandro@email.com', 'senh@321', 'N'), (2, 'admin', 'admin@admin', 'senh@123', 'S');
+COMMIT;
+
+SET FOREIGN_KEY_CHECKS = 1;

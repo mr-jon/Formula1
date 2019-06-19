@@ -33,7 +33,7 @@
             <a class="nav-link text-danger" href="listar-paises.php">Países</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link text-danger" href="listar-gp.php">GP's</a>
+            <a class="nav-link text-danger" href="listar-gps.php">GP's</a>
           </li>
         </ul>
         <a class="nav-link text-danger" href="login.php">Login</a>

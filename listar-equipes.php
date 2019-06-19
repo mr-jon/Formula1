@@ -1,1 +1,1 @@
-listar-equipes.php
+listar-equipes

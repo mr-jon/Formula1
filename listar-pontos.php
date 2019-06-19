@@ -1,1 +1,1 @@
-listar-pontos.php
+listar-pontos

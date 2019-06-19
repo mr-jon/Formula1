@@ -21,27 +21,19 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link text-danger" href="#">Ranking<span class="sr-only">(Página atual)</span></a>
+            <a class="nav-link text-danger" href="listar-pontos.php">Ranking<span class="sr-only">(Página atual)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link text-danger" href="#">Pilotos</a>
+            <a class="nav-link text-danger" href="listar-pilotos.php">Pilotos</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link text-danger" href="#">Equipes</a>
+            <a class="nav-link text-danger" href="listar-equipes.php">Equipes</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link text-danger" href="#">Países</a>
+            <a class="nav-link text-danger" href="listar-paises.php">Países</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link text-danger dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              GP's
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Austrália</a>
-              <a class="dropdown-item" href="#">Bahrein</a>
-              <a class="dropdown-item" href="#">Brasil</a>
-              <a class="dropdown-item" href="#">Canadá</a>
-            </div>
+          <li class="nav-item active">
+            <a class="nav-link text-danger" href="listar-gp.php">GP's</a>
           </li>
         </ul>
         <a class="nav-link text-danger" href="login.php">Login</a>

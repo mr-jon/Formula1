@@ -25,6 +25,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(32) NOT NULL,
+  `admin` char(1) NOT NULL DEFAULT 'N'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `admin`) VALUES
+(1, 'Jeffery', 'jeffery@email.com', 'senh@123', 'N'),
+(1, 'Leandro', 'leandro@email.com', 'senh@321', 'N'),
+(2, 'admin', 'admin@admin', 'senh@123', 'S');
+
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `equipe`
 --
 
@@ -63,7 +87,7 @@ CREATE TABLE `pais` (
 
 INSERT INTO `pais` (`codPais`, `nome`) VALUES
 (1, 'Austrália'),
-(2, 'Bahrain'),
+(2, 'Bahrein'),
 (3, 'Brasil'),
 (4, 'Canadá');
 

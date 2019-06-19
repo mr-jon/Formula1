@@ -1,6 +1,6 @@
 <?php
   function obterConexao() {
-    $conexao = mysqli_connect("localhost", "root", "", "minha_loja");
+    $conexao = mysqli_connect("localhost", "root", "root", "formula1");
     mysqli_set_charset($conexao, 'utf8');
     return $conexao;
   }

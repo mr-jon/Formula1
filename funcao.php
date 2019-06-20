@@ -130,6 +130,49 @@
     return $equipes;
   }
 
+  function obterEquipeById($id) {
+    $conexao = obterConexao();
+    $sql = "select * from equipe where codEquip=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    $resultado = mysqli_stmt_get_result($sentenca);
+    $equipe = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+    mysqli_free_result($resultado);
+    mysqli_close($conexao);
+    return $equipe;
+  }
+
+  function salvarEquipe($equipe) {
+    $conexao = obterConexao();
+    $sql = "insert into equipe (codEquip, codPais, nome) values (?, ?, ?)";
+    $sentenca = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($sentenca, "iis", $equipe["codEquip"], $equipe["codPais"], $equipe["nome"]);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
+
+  function alterarEquipe($equipe) {
+    $conexao = obterConexao();
+    $sql = "update equipe set codPais=?, nome=? where codEquip=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "isi", $equipe['codPais'], $equipe['nome'], $equipe['codEquip']);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
+  function removerEquipe($id) {
+    $conexao = obterConexao();
+    $sql = "delete from equipe where codEquip=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
   function obterPaises() {
     $conexao = obterConexao();
     $resultado = mysqli_query($conexao,

@@ -7,7 +7,7 @@
 	<!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/pro.css">
-  
+
 </head>
 <body>
   <div class="jumbotron jumbotron-fluid mb-0 bg-danger text-white">
@@ -33,7 +33,7 @@
             <a class="nav-link text-danger" href="listar-paises.php">Países</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link text-danger" href="listar-gps.php">GP's</a>
+            <a class="nav-link text-danger" href="listar-gp.php">GP's</a>
           </li>
         </ul>
         <a class="nav-link text-danger" href="login.php">Login</a>

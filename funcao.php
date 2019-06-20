@@ -111,9 +111,34 @@
     return $paises;
   }
 
+  function obterGp() {
+    $conexao = obterConexao();
+    $resultado = mysqli_query($conexao,
+            "SELECT gp.*, pais.nome as pais_nome FROM gp
+            JOIN pais ON gp.codPais = pais.codPais
+            ORDER BY gp.codGp");
+    $gp = array();
+    if ($resultado) {
+      $gp = mysqli_fetch_all($resultado,
+          MYSQLI_ASSOC);
+    }
+    mysqli_free_result($resultado);
+    mysqli_close($conexao);
+    return $gp;
+  }
+
   function removerPais($id) {
     $conexao = obterConexao();
     $sql = "delete from pais where codPais=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
+  function removerGp($id) {
+    $conexao = obterConexao();
+    $sql = "delete from gp where codGp=?";
     $sentenca = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($sentenca, "i", $id);
     mysqli_stmt_execute($sentenca);
@@ -126,6 +151,16 @@
     $sentenca = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($sentenca, "si", $pais['nome'], $pais['codPais']);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
+  function alterarGp($gp) {
+    $conexao = obterConexao();
+    $sql = "update gp set codPais=?, nome=? where codGp=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "isi", $gp['codPais'], $gp['nome'], $gp['codGp']);
     mysqli_stmt_execute($sentenca);
     mysqli_close($conexao);
   }
@@ -144,6 +179,20 @@
     return $pais;
   }
 
+  function obterGpById($id) {
+    $conexao = obterConexao();
+    $sql = "select * from gp where codGp=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    $resultado = mysqli_stmt_get_result($sentenca);
+    $gp = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+    mysqli_free_result($resultado);
+    mysqli_close($conexao);
+    return $gp;
+  }
+
   function salvarPais($pais) {
     $conexao = obterConexao();
     $sql = "insert into pais (nome) values (?)";
@@ -152,5 +201,15 @@
     mysqli_stmt_execute($sentenca);
     mysqli_close($conexao);
   }
+
+  function salvarGp($gp) {
+    $conexao = obterConexao();
+    $sql = "insert into gp (codGp, codPais, nome) values (?, ?, ?)";
+    $sentenca = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($sentenca, "iis", $gp["codGp"], $gp["codPais"], $gp["nome"]);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
 
  ?>

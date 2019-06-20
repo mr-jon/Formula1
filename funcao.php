@@ -32,12 +32,12 @@
 
 
 
-   function salvarNovoPiloto($piloto) {
+  function salvarNovoPiloto($piloto) {
     $conexao = obterConexao();
-    $sql = "insert into piloto (codPiloto, codEquipe, codPais, nome) values (?, ?, ?, ?)";
+    $sql = "insert into piloto (codPiloto, codEquip, codPais, nome) values (?, ?, ?, ?)";
     $sentenca = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($sentenca, "sssssi", $piloto['codPiloto'], $piloto['codEquipe'], $piloto['codPais'], $piloto['nome']);
+    mysqli_stmt_bind_param($sentenca, "iiis", $piloto['codPiloto'], $piloto['codEquip'], $piloto['codPais'], $piloto['nome']);
     mysqli_stmt_execute($sentenca);
     mysqli_close($conexao);
   }
@@ -86,7 +86,7 @@
   function obterEquipes() {
     $conexao = obterConexao();
     $resultado = mysqli_query($conexao,
-            "SELECT equipe.codEquip as equipe_id, equipe.nome as equipe_nome FROM equipe");
+            "SELECT * FROM equipe");
     $equipes = array();
     if ($resultado) {
       $equipes = mysqli_fetch_all($resultado,
@@ -100,7 +100,7 @@
   function obterPaises() {
     $conexao = obterConexao();
     $resultado = mysqli_query($conexao,
-            "SELECT pais.codPais as pais_id, pais.nome as pais_nome FROM pais");
+            "SELECT * FROM pais");
     $paises = array();
     if ($resultado) {
       $paises = mysqli_fetch_all($resultado,

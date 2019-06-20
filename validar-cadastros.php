@@ -3,12 +3,12 @@
 
 
   $piloto = array();
-  $piloto['id'] = $_POST['id'];
-  $piloto['codEquipe'] = $_POST['codEquipe'];
+  $piloto['codPiloto'] = $_POST['id'];
+  $piloto['codEquip'] = $_POST['codEquip'];
   $piloto['codPais'] = $_POST['codPais'];
   $piloto['nome'] = $_POST['nome'];
-  //print_r($piloto);
-  if ($piloto['id'] == 0) {
+  print_r($piloto);
+  if ($piloto['codPiloto'] == 0) {
     salvarNovoPiloto($piloto);
   } else {
     alterarPiloto($piloto);

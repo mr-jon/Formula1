@@ -11,10 +11,10 @@
 
 	if (!isset($piloto)) {
 	  $piloto = array();
-	  $piloto['id'] = 0;
+	  $piloto['codPiloto'] = 0;
+	  $piloto['codEquip'] = "";
+	  $piloto['codPais'] = "";
 	  $piloto['nome'] = "";
-	  $piloto['equipe'] = "";
-	  $piloto['pais'] = "";
 	}
 	// $categorias = obterCategorias();
 
@@ -33,20 +33,20 @@
 			<form action="validar-cadastros.php" method="post">
 				<div class="form-group">
 					<label for="id">ID</label>
-					<input readonly type="text" class="form-control" id="id" name="id" value="<?= $piloto['id'] ?>">
+					<input readonly type="text" class="form-control" id="id" name="id" value="<?= $piloto['codPiloto'] ?>">
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="i-nome">Nome</label>
-						<input type="text" class="form-control" id="i-nome" placeholder="Informe o nome do piloto" name="nome">
+						<label for="nome">Nome</label>
+						<input type="text" class="form-control" id="nome" placeholder="Informe o nome do piloto" name="nome">
 					</div>
 
 					<div class="form-group col-md-3">
-						<label for="inputPais">Equipe</label>
-						<select id="inputPais" class="form-control" name="codEquipe">
+						<label for="equipe">Equipe</label>
+						<select id="equipe" class="form-control" name="codEquip">
 							<?php foreach ($equipes as $equipe): ?>
-								<?php $selected = ($equipe["equipe_id"] == $piloto["equipe"]) ? "selected" : ""; ?>
-								<option <?= $selected ?> value="<?= $equipe['equipe_id'] ?>"><?= $equipe['equipe_nome'] ?></option>
+								<?php $selected = ($equipe["codEquip"] == $piloto["codEquip"]) ? "selected" : ""; ?>
+								<option <?= $selected ?> value="<?= $equipe['codEquip'] ?>"><?= $equipe['nome'] ?></option>
 							<?php endforeach ?>
 							
 							<option selected>Selecione a Equipe do piloto</option>
@@ -54,11 +54,11 @@
 					</div>
 
 					<div class="form-group col-md-3">
-						<label for="inputPais">País</label>
-						<select id="inputPais" class="form-control" name="codPais">
+						<label for="pais">País</label>
+						<select id="pais" class="form-control" name="codPais">
 							<?php foreach ($paises as $pais): ?>
-								<?php $selected = ($pais["pais_id"] == $piloto["pais"]) ? "selected" : ""; ?>
-								<option <?= $selected ?> value="<?= $pais['pais_id'] ?>"><?= $pais['pais_nome'] ?></option>
+								<?php $selected = ($pais["codPais"] == $piloto["codPais"]) ? "selected" : ""; ?>
+								<option <?= $selected ?> value="<?= $pais['codPais'] ?>"><?= $pais['nome'] ?></option>
 							<?php endforeach ?>
 							<option selected>Selecione o país do piloto</option>
 						</select>

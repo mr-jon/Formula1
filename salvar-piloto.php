@@ -7,7 +7,7 @@
   $piloto['codEquip'] = $_POST['codEquip'];
   $piloto['codPais'] = $_POST['codPais'];
   $piloto['nome'] = $_POST['nome'];
-  print_r($piloto);
+  // print_r($piloto);
   if ($piloto['codPiloto'] == 0) {
     salvarNovoPiloto($piloto);
   } else {

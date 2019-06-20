@@ -22,15 +22,12 @@
 	$paises = obterPaises();
 
 ?>
-<pre>
-	<?php var_dump($equipes); ?>
-</pre>
 <?php include 'header.php'; ?>
 <div class="container">
 	<div class="row mt-5">
 		<div class="col-md-12">
 			<h1>Cadastrar Piloto</h1>
-			<form action="validar-cadastros.php" method="post">
+			<form action="salvar-piloto.php" method="post">
 				<div class="form-group">
 					<label for="id">ID</label>
 					<input readonly type="text" class="form-control" id="id" name="id" value="<?= $piloto['codPiloto'] ?>">
@@ -38,29 +35,29 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="nome">Nome</label>
-						<input type="text" class="form-control" id="nome" placeholder="Informe o nome do piloto" name="nome">
+						<input type="text" class="form-control" id="nome" placeholder="Informe o nome do piloto" name="nome" value="<?= $piloto['nome'] ?>">
 					</div>
 
 					<div class="form-group col-md-3">
 						<label for="equipe">Equipe</label>
 						<select id="equipe" class="form-control" name="codEquip">
+							<option selected>Selecione a Equipe do piloto</option>
 							<?php foreach ($equipes as $equipe): ?>
 								<?php $selected = ($equipe["codEquip"] == $piloto["codEquip"]) ? "selected" : ""; ?>
 								<option <?= $selected ?> value="<?= $equipe['codEquip'] ?>"><?= $equipe['nome'] ?></option>
 							<?php endforeach ?>
 							
-							<option selected>Selecione a Equipe do piloto</option>
 						</select>
 					</div>
 
 					<div class="form-group col-md-3">
 						<label for="pais">País</label>
 						<select id="pais" class="form-control" name="codPais">
+							<option selected>Selecione o país do piloto</option>
 							<?php foreach ($paises as $pais): ?>
 								<?php $selected = ($pais["codPais"] == $piloto["codPais"]) ? "selected" : ""; ?>
 								<option <?= $selected ?> value="<?= $pais['codPais'] ?>"><?= $pais['nome'] ?></option>
 							<?php endforeach ?>
-							<option selected>Selecione o país do piloto</option>
 						</select>
 					</div>
 				</div>

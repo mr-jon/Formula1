@@ -45,6 +45,23 @@
   function obterPilotos() {
     $conexao = obterConexao();
     $resultado = mysqli_query($conexao,
+            "SELECT piloto.*, equipe.nome as equipe_nome, pais.nome as pais_nome FROM piloto
+            JOIN equipe ON equipe.codEquip = piloto.codEquip
+            JOIN pais ON pais.codPais = piloto.codPais
+            ");
+    $pilotos = array();
+    if ($resultado) {
+      $pilotos = mysqli_fetch_all($resultado,
+          MYSQLI_ASSOC);
+    }
+    mysqli_free_result($resultado);
+    mysqli_close($conexao);
+    return $pilotos;
+  }
+
+  function obterPilotosRanking() {
+    $conexao = obterConexao();
+    $resultado = mysqli_query($conexao,
             "SELECT piloto.*, equipe.nome as equipe_nome, pais.nome as pais_nome, sum(pilotogp.pts) as pontos_piloto FROM piloto
             JOIN equipe ON equipe.codEquip = piloto.codEquip
             JOIN pais ON pais.codPais = piloto.codPais
@@ -63,12 +80,26 @@
     return $pilotos;
   }
 
-  function alterarPiloto($piloto) {
+  function obterPilotoById($id) {
     $conexao = obterConexao();
-    $sql = "update piloto set nome=?, codEquip=?, codPais=? where id=?";
+    $sql = "select * from piloto where codPiloto=?";
     $sentenca = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($sentenca, "sssssii", $piloto['nome'], $piloto['codEquip'], $piloto['codPais'], $piloto['id']);
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    $resultado = mysqli_stmt_get_result($sentenca);
+    $pais = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+    mysqli_free_result($resultado);
+    mysqli_close($conexao);
+    return $pais;
+  }
+
+  function alterarPiloto($piloto) {
+    $conexao = obterConexao();
+    $sql = "update piloto set codEquip=?, codPais=?, nome=? where id=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "iisi", $piloto['codEquip'], $piloto['codPais'], $piloto['nome'], $piloto['id']);
     mysqli_stmt_execute($sentenca);
     mysqli_close($conexao);
   }

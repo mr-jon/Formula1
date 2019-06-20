@@ -3,7 +3,6 @@
 	include_once "funcao.php";
 	$equipes = obterEquipes();
  ?>
- <pre><?php var_dump($equipes); ?></pre>
 <?php include "header.php"; ?>
     <div class="container">
       <div class="row mt-5">

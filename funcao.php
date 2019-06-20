@@ -100,7 +100,8 @@
   function obterPaises() {
     $conexao = obterConexao();
     $resultado = mysqli_query($conexao,
-            "SELECT pais.codPais as pais_id, pais.nome as pais_nome FROM pais");
+            //"SELECT pais.codPais as pais_id, pais.nome as pais_nome FROM pais");
+            "SELECT * FROM pais");
     $paises = array();
     if ($resultado) {
       $paises = mysqli_fetch_all($resultado,
@@ -113,7 +114,7 @@
 
   function removerPais($id) {
     $conexao = obterConexao();
-    $sql = "delete from pais where id=?";
+    $sql = "delete from pais where codPais=?";
     $sentenca = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($sentenca, "i", $id);
     mysqli_stmt_execute($sentenca);
@@ -122,17 +123,17 @@
 
   function alterarPais($pais) {
     $conexao = obterConexao();
-    $sql = "update pais set nome=? where id=?";
+    $sql = "update pais set nome=? where codPais=?";
     $sentenca = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($sentenca, "si", $pais['nome'], $questao['id']);
+    mysqli_stmt_bind_param($sentenca, "si", $pais['nome'], $pais['codPais']);
     mysqli_stmt_execute($sentenca);
     mysqli_close($conexao);
   }
 
   function obterPaisById($id) {
     $conexao = obterConexao();
-    $sql = "select * from pais where id=?";
+    $sql = "select * from pais where codPais=?";
     $sentenca = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($sentenca, "i", $id);
@@ -144,5 +145,13 @@
     return $pais;
   }
 
+  function salvarPais($pais) {
+    $conexao = obterConexao();
+    $sql = "insert into pais (nome) values (?)";
+    $sentenca = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($sentenca, "s", $pais["nome"]);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
 
  ?>

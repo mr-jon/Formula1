@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row mt-5">
       	<div class="col-md-8">
-      		<h1>Pilotos</h1>
+      		<h1>Cadastro de Países</h1>
       	</div>
       	<?php if ($edit): ?>
 	      	<div class="col-md-4 text-right">
@@ -32,7 +32,7 @@
                 <td scope="col"><?= $pais['nome'] ?></td>
                 <?php if ($edit): ?>
 	                <td scope="col">
-	                	<a class="text-danger" href="editar-pais.php?id=<?= $pais['codPais'] ?>"><i class="fas fa-edit"></i></a> |
+	                	<a class="text-danger" href="editar-paises.php?id=<?= $pais['codPais'] ?>"><i class="fas fa-edit"></i></a> |
 	                	<a class="text-danger" href="deletar-pais.php?id=<?= $pais['codPais'] ?>"><i class="fas fa-trash"></i></a>
 	                </td>
                 <?php endif ?>

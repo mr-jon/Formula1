@@ -26,8 +26,8 @@
 			<h1>Cadastrar GP</h1>
 			<form action="salvar-gp.php" method="post">
 				<div class="form-group">
-					<label for="id">ID</label>
-					<input readonly type="text" class="form-control" id="id" name="id" value="<?= $gp['codGp'] ?>">
+					<!-- <label for="id">ID</label> -->
+					<input hidden type="text" class="form-control" id="id" name="id" value="<?= $gp['codGp'] ?>">
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
@@ -35,7 +35,7 @@
 						<input type="text" class="form-control" id="nome" placeholder="Informe o nome do GP" name="nome" value="<?= $gp['nome'] ?>">
 					</div>
 
-					<div class="form-group col-md-3">
+					<div class="form-group col-md-6">
 						<label for="pais">País do GP</label>
 						<select id="pais" class="form-control" name="codPais">
 						<option selected>Selecione o País do GP</option>

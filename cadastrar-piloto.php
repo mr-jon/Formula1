@@ -29,8 +29,8 @@
 			<h1>Cadastrar Piloto</h1>
 			<form action="salvar-piloto.php" method="post">
 				<div class="form-group">
-					<label for="id">ID</label>
-					<input readonly type="text" class="form-control" id="id" name="id" value="<?= $piloto['codPiloto'] ?>">
+					<!-- <label for="id">ID</label> -->
+					<input hidden type="text" class="form-control" id="id" name="id" value="<?= $piloto['codPiloto'] ?>">
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
@@ -46,7 +46,7 @@
 								<?php $selected = ($equipe["codEquip"] == $piloto["codEquip"]) ? "selected" : ""; ?>
 								<option <?= $selected ?> value="<?= $equipe['codEquip'] ?>"><?= $equipe['nome'] ?></option>
 							<?php endforeach ?>
-							
+
 						</select>
 					</div>
 

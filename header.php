@@ -24,7 +24,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link text-danger" href="listar-pontos.php">Ranking<span class="sr-only">(Página atual)</span></a>
+            <a class="nav-link text-danger" href="ranking.php">Ranking<span class="sr-only">(Página atual)</span></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link text-danger" href="listar-pilotos.php">Pilotos</a>

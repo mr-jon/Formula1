@@ -88,18 +88,42 @@
     mysqli_stmt_bind_param($sentenca, "i", $id);
     mysqli_stmt_execute($sentenca);
     $resultado = mysqli_stmt_get_result($sentenca);
-    $pais = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+    $piloto = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
     mysqli_free_result($resultado);
     mysqli_close($conexao);
-    return $pais;
+    return $piloto;
+  }
+
+  function obterUsuarioById($id) {
+    $conexao = obterConexao();
+    $sql = "select * from usuario where id=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    $resultado = mysqli_stmt_get_result($sentenca);
+    $usuario = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+    mysqli_free_result($resultado);
+    mysqli_close($conexao);
+    return $usuario;
   }
 
   function alterarPiloto($piloto) {
     $conexao = obterConexao();
-    $sql = "update piloto set codEquip=?, codPais=?, nome=? where id=?";
+    $sql = "update piloto set codEquip=?, codPais=?, nome=? where CodPiloto=?";
     $sentenca = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($sentenca, "iisi", $piloto['codEquip'], $piloto['codPais'], $piloto['nome'], $piloto['id']);
+    mysqli_stmt_bind_param($sentenca, "iisi", $piloto['codEquip'], $piloto['codPais'], $piloto['nome'], $piloto['codPiloto']);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
+  function alterarUsuario($usuario) {
+    $conexao = obterConexao();
+    $sql = "update usuario set nome=?, email=?, senha=? where id=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "sssi", $usuario['nome'], $usuario['email'], $usuario['senha'], $usuario['id']);
     mysqli_stmt_execute($sentenca);
     mysqli_close($conexao);
   }
@@ -111,6 +135,29 @@
     mysqli_stmt_bind_param($sentenca, "i", $id);
     mysqli_stmt_execute($sentenca);
     mysqli_close($conexao);
+  }
+
+  function removerUsuario($id) {
+    $conexao = obterConexao();
+    $sql = "delete from usuario where id=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
+  function obterUsuarios() {
+    $conexao = obterConexao();
+    $resultado = mysqli_query($conexao,
+            "SELECT * FROM usuario");
+    $usuarios = array();
+    if ($resultado) {
+      $usuarios = mysqli_fetch_all($resultado,
+          MYSQLI_ASSOC);
+    }
+    mysqli_free_result($resultado);
+    mysqli_close($conexao);
+    return $usuarios;
   }
 
 
@@ -244,5 +291,13 @@
     mysqli_close($conexao);
   }
 
+  function salvarUsuario($usuario) {
+    $conexao = obterConexao();
+    $sql = "insert into usuario (nome, email, senha) values (?, ?, ?)";
+    $sentenca = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($sentenca, "sss", $usuario["nome"], $usuario["email"], $usuario["senha"]);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
 
  ?>

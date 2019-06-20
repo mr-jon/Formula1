@@ -14,8 +14,8 @@
 		<div class="row mb-5">
 			<div class="col-md-12 text-right">
 				<div class="btn-group" role="group" aria-label="Usuários">
-					<button type="button" class="btn btn-danger"><i class="fas fa-user-plus"></i> Cadastrar Usuário</button>
-					<button type="button" class="btn btn-danger"><i class="fas fa-users"></i> Listar Usuários</button>
+					<a href="cadastrar-usuario.php" class="btn btn-danger"><i class="fas fa-user-plus"></i> Cadastrar Usuário</a>
+					<a href="listar-usuario.php" class="btn btn-danger"><i class="fas fa-users"></i> Listar Usuários</a>
 				</div>
 			</div>
 		</div>

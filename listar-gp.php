@@ -7,22 +7,22 @@
     <div class="container">
       <div class="row mt-5">
       	<div class="col-md-8">
-      		<h1>Cadastro GP</h1>
+      		<h1>LISTAGEM DE GP'S</h1>
       	</div>
       	<?php if ($edit): ?>
 	      	<div class="col-md-4 text-right">
-	      		<a class="btn btn-danger" href="cadastrar-gp.php"><i class="fa fa-plus"></i> Novo GP</a>
+	      		<a class="btn btn-danger" href="cadastrar-gp.php"><i class="fa fa-plus"></i> NOVO GP</a>
 	      	</div>
       	<?php endif ?>
       </div>
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th scope="col">Código GP</th>
-            <th scope="col">Código Pais</th>
-            <th scope="col">Nome GP</th>
+            <th scope="col">COD</th>
+            <th scope="col">PAIS</th>
+            <th scope="col">NOME GP</th>
             <?php if ($edit): ?>
-            	<th scope="col">Ação</th>
+            	<th scope="col">AÇÃO</th>
             <?php endif ?>
           </tr>
         </thead>

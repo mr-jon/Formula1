@@ -24,11 +24,11 @@
 			<h1>Cadastrar País</h1>
 			<form action="salvar-pais.php" method="post">
 				<div class="form-group">
-					<label for="id">ID</label>
-					<input readonly type="text" class="form-control" id="id" name="id" value="<?= $pais['codPais'] ?>">
+					<!-- <label for="id">ID</label> -->
+					<input hidden type="text" class="form-control" id="id" name="id" value="<?= $pais['codPais'] ?>">
 				</div>
 				<div class="form-row">
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-12">
 						<label for="i-nome">Nome</label>
 						<input type="text" class="form-control" id="nome" placeholder="Informe o nome do País" name="nome" value="<?= $pais['nome'] ?>">
 					</div>

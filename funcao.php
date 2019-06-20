@@ -1,6 +1,6 @@
 <?php
   function obterConexao() {
-    $conexao = mysqli_connect("localhost", "root", "root", "formula1");
+    $conexao = mysqli_connect("localhost", "root", "", "formula1");
     mysqli_set_charset($conexao, 'utf8');
     return $conexao;
   }
@@ -45,10 +45,13 @@
   function obterPilotos() {
     $conexao = obterConexao();
     $resultado = mysqli_query($conexao,
-            "SELECT piloto.*, equipe.nome as equipe_nome, pais.nome as pais_nome, pilotogp.pts as pontos_piloto FROM piloto
-            JOIN equipe ON equipe.codEquip = piloto.codEquip 
+            "SELECT piloto.*, equipe.nome as equipe_nome, pais.nome as pais_nome, sum(pilotogp.pts) as pontos_piloto FROM piloto
+            JOIN equipe ON equipe.codEquip = piloto.codEquip
             JOIN pais ON pais.codPais = piloto.codPais
             JOIN pilotogp ON pilotogp.codPiloto = piloto.codPiloto
+            GROUP BY piloto.codPiloto
+            HAVING sum(pilotogp.pts)
+            ORDER BY pontos_piloto desc
             ");
     $pilotos = array();
     if ($resultado) {
@@ -78,7 +81,7 @@
     mysqli_stmt_execute($sentenca);
     mysqli_close($conexao);
   }
-  
+
 
   function obterEquipes() {
     $conexao = obterConexao();
@@ -107,5 +110,39 @@
     mysqli_close($conexao);
     return $paises;
   }
+
+  function removerPais($id) {
+    $conexao = obterConexao();
+    $sql = "delete from pais where id=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
+  function alterarPais($pais) {
+    $conexao = obterConexao();
+    $sql = "update pais set nome=? where id=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "si", $pais['nome'], $questao['id']);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
+  function obterPaisById($id) {
+    $conexao = obterConexao();
+    $sql = "select * from pais where id=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    $resultado = mysqli_stmt_get_result($sentenca);
+    $pais = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+    mysqli_free_result($resultado);
+    mysqli_close($conexao);
+    return $pais;
+  }
+
 
  ?>

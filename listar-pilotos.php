@@ -5,9 +5,9 @@
  ?>
 <?php include "header.php"; ?>
     <div class="container">
-      <div class="row">
+      <div class="row mt-5">
       	<div class="col-md-8">
-      		<h1>Listagem de Pilotos</h1>
+      		<h1>Pilotos</h1>
       	</div>
       	<?php if ($edit): ?>
 	      	<div class="col-md-4 text-right">

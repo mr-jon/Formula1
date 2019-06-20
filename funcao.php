@@ -60,6 +60,52 @@
     return $pilotos;
   }
 
+  function alterarPiloto($piloto) {
+    $conexao = obterConexao();
+    $sql = "update piloto set nome=?, codEquip=?, codPais=? where id=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "sssssii", $piloto['nome'], $piloto['codEquip'], $piloto['codPais'], $piloto['id']);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
+  function removerPiloto($id) {
+    $conexao = obterConexao();
+    $sql = "delete from piloto where codPiloto=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
   
+
+  function obterEquipes() {
+    $conexao = obterConexao();
+    $resultado = mysqli_query($conexao,
+            "SELECT equipe.codEquip as equipe_id, equipe.nome as equipe_nome FROM equipe");
+    $equipes = array();
+    if ($resultado) {
+      $equipes = mysqli_fetch_all($resultado,
+          MYSQLI_ASSOC);
+    }
+    mysqli_free_result($resultado);
+    mysqli_close($conexao);
+    return $equipes;
+  }
+
+  function obterPaises() {
+    $conexao = obterConexao();
+    $resultado = mysqli_query($conexao,
+            "SELECT pais.codPais as pais_id, pais.nome as pais_nome FROM pais");
+    $paises = array();
+    if ($resultado) {
+      $paises = mysqli_fetch_all($resultado,
+          MYSQLI_ASSOC);
+    }
+    mysqli_free_result($resultado);
+    mysqli_close($conexao);
+    return $paises;
+  }
 
  ?>

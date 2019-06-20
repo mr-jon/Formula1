@@ -4,9 +4,9 @@
 
   $piloto = array();
   $piloto['id'] = $_POST['id'];
-  $piloto['nome'] = $_POST['nome'];
-  $piloto['codPais'] = $_POST['codPais'];
   $piloto['codEquipe'] = $_POST['codEquipe'];
+  $piloto['codPais'] = $_POST['codPais'];
+  $piloto['nome'] = $_POST['nome'];
   //print_r($piloto);
   if ($piloto['id'] == 0) {
     salvarNovoPiloto($piloto);

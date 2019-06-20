@@ -117,7 +117,9 @@
   function obterEquipes() {
     $conexao = obterConexao();
     $resultado = mysqli_query($conexao,
-            "SELECT * FROM equipe");
+            "SELECT equipe.*, pais.nome as nome_pais, pais.codPais FROM equipe
+            JOIN pais ON pais.codPais = equipe.codPais
+            ");
     $equipes = array();
     if ($resultado) {
       $equipes = mysqli_fetch_all($resultado,

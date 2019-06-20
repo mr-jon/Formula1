@@ -9,7 +9,7 @@
 	$usuario = obterUsuarioByEmail($_SESSION['email']);
 ?>
 <?php include 'header.php'; ?>
-	
+
 	<div class="container">
 		<div class="row mb-5">
 			<div class="col-md-12 text-right">
@@ -41,9 +41,9 @@
 					</div>
 				</a>
 			</div>
-			
+
 			<div class="col-md-3 mb-3 text-center">
-				<a class="text-danger" href="listar-usuario.php">
+				<a class="text-danger" href="cadastrar-equipe.php">
 					<div class="card">
 					 	<div class="card-img-top"><i class="fas fa-users-medical display-2 pt-5 pb-3"></i></div>
 					 	<div class="card-body">
@@ -52,9 +52,9 @@
 					</div>
 				</a>
 			</div>
-			
+
 			<div class="col-md-3 mb-3 text-center">
-				<a class="text-danger" href="listar-usuario.php">
+				<a class="text-danger" href="cadastrar-gp.php">
 					<div class="card">
 					 	<div class="card-img-top"><i class="far fa-trophy-alt display-2 pt-5 pb-3"></i></div>
 					 	<div class="card-body">
@@ -63,9 +63,9 @@
 					</div>
 				</a>
 			</div>
-			
+
 			<div class="col-md-3 mb-3 text-center">
-				<a class="text-danger" href="listar-usuario.php">
+				<a class="text-danger" href="cadastrar-pais.php">
 					<div class="card">
 					 	<div class="card-img-top"><i class="far fa-globe-americas display-2 pt-5 pb-3"></i></div>
 					 	<div class="card-body">
@@ -74,8 +74,8 @@
 					</div>
 				</a>
 			</div>
-			
+
 		</div>
-		
+
 	</div>
 <?php include 'footer.php'; ?>

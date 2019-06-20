@@ -1,3 +1,6 @@
+<?php
+ $logado = (isset($_SESSION['email'])) ? true : false;
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +39,11 @@
             <a class="nav-link text-danger" href="listar-gp.php">GP's</a>
           </li>
         </ul>
-        <a class="nav-link text-danger" href="login.php">Login</a>
+				<?php if ($logado): ?>
+						<a class="nav-link text-danger" href="logout.php">Logout</a>
+				<?php else: ?>
+        		<a class="nav-link text-danger" href="login.php">Login</a>
+				<?php endif; ?>
       </div>
     </div>
   </nav>

@@ -42,6 +42,39 @@
     mysqli_close($conexao);
   }
 
+  function salvarPtsGp($ptsGp) {
+    $conexao = obterConexao();
+    $sql = "insert into pilotogp (codGp, codPiloto, codEquip, pts) values (?, ?, ?, ?)";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "iiis", $ptsGp['codGp'], $ptsGp['codPiloto'], $ptsGp['codEquip'], $ptsGp['pts']);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
+    function obterPtsPilotoGp($id) {
+    $conexao = obterConexao();
+    $sql = "select * from pilotogp where codPiloto=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    $resultado = mysqli_stmt_get_result($sentenca);
+    $gp = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+    mysqli_free_result($resultado);
+    mysqli_close($conexao);
+    return $gp;
+  }
+
+  function removerPtsGp($id) {
+    $conexao = obterConexao();
+    $sql = "delete from pilotogp where codGp=?";
+    $sentenca = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($sentenca, "i", $id);
+    mysqli_stmt_execute($sentenca);
+    mysqli_close($conexao);
+  }
+
   function obterPilotos() {
     $conexao = obterConexao();
     $resultado = mysqli_query($conexao,
@@ -249,6 +282,7 @@
     mysqli_close($conexao);
     return $gp;
   }
+
 
   function removerPais($id) {
     $conexao = obterConexao();

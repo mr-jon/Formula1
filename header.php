@@ -23,8 +23,13 @@
     <div class="container">
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
+          <?php if ($logado): ?>
+            <li class="nav-item active">
+              <a class="nav-link text-danger" href="dashboard.php">Painel<span class="sr-only">(Página atual)</span></a>
+            </li>
+          <?php endif ?>
           <li class="nav-item active">
-            <a class="nav-link text-danger" href="ranking.php">Ranking<span class="sr-only">(Página atual)</span></a>
+            <a class="nav-link text-danger" href="listar-ranking.php">Ranking</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link text-danger" href="listar-pilotos.php">Pilotos</a>
@@ -40,7 +45,7 @@
           </li>
         </ul>
 				<?php if ($logado): ?>
-						<a class="nav-link text-danger" href="logout.php">Logout</a>
+						<a class="nav-link text-danger" href="logout.php">Logout <i class="fas fa-sign-in-alt"></i></a>
 				<?php else: ?>
         		<a class="nav-link text-danger" href="login.php">Login</a>
 				<?php endif; ?>

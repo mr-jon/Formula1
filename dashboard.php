@@ -21,11 +21,11 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3 mb-3 text-center">
-				<a class="text-danger" href="cadastrar-pontos.php">
+				<a class="text-danger" href="cadastrar-ptsgp.php">
 					<div class="card">
 					 	<div class="card-img-top"><i class="fas fa-sort-numeric-up-alt display-2 pt-5 pb-3"></i></div>
 					 	<div class="card-body">
-					    	<h5 class="card-title">Cadastrar Pontos</h5>
+					    	<h5 class="card-title">Cadastrar Pontuação</h5>
 						</div>
 					</div>
 				</a>

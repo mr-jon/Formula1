@@ -34,7 +34,7 @@
                 <td scope="col"><?= $equipe['nome_pais'] ?></td>
                 <?php if ($edit): ?>
 	                <td scope="col">
-	                	<a class="text-danger" href="editar-equipe.php?id=<?= $equipe['codEquip'] ?>"><i class="fas fa-edit"></i></a> | 
+	                	<a class="text-warning" href="editar-equipe.php?id=<?= $equipe['codEquip'] ?>"><i class="fas fa-edit"></i></a> | 
 	                	<a class="text-danger" href="deletar-equipe.php?id=<?= $equipe['codEquip'] ?>"><i class="fas fa-trash"></i></a>
 	                </td>
                 <?php endif ?>

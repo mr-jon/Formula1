@@ -32,7 +32,7 @@
                 <td scope="col"><?= $pais['nome'] ?></td>
                 <?php if ($edit): ?>
 	                <td scope="col">
-	                	<a class="text-danger" href="editar-paises.php?id=<?= $pais['codPais'] ?>"><i class="fas fa-edit"></i></a> |
+	                	<a class="text-warning" href="editar-paises.php?id=<?= $pais['codPais'] ?>"><i class="fas fa-edit"></i></a> |
 	                	<a class="text-danger" href="deletar-pais.php?id=<?= $pais['codPais'] ?>"><i class="fas fa-trash"></i></a>
 	                </td>
                 <?php endif ?>

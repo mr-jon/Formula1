@@ -36,7 +36,7 @@
                 <td scope="col"><?= $piloto['equipe_nome'] ?></td>
                 <?php if ($edit): ?>
 	                <td scope="col">
-	                	<a class="text-danger" href="editar-piloto.php?id=<?= $piloto['codPiloto'] ?>"><i class="fas fa-edit"></i></a> |
+	                	<a class="text-warning" href="editar-piloto.php?id=<?= $piloto['codPiloto'] ?>"><i class="fas fa-edit"></i></a> |
 	                	<a class="text-danger" href="deletar-piloto.php?id=<?= $piloto['codPiloto'] ?>"><i class="fas fa-trash"></i></a>
 	                </td>
                 <?php endif ?>

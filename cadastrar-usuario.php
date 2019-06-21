@@ -31,19 +31,15 @@
 					<input hidden type="text" class="form-control" id="id" name="id" value="<?= $usuario['id'] ?>">
 				</div>
 				<div class="form-row">
-					<div class="form-group col-md-12">
+					<div class="form-group col-md-5">
 						<label for="i-nome">Nome</label>
 						<input type="text" class="form-control" id="nome" placeholder="Informe o nome do Usuário" name="nome" value="<?= $usuario['nome'] ?>">
 					</div>
-				</div>
-        <div class="form-row">
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-4">
 						<label for="i-nome">E-mail</label>
 						<input type="email" class="form-control" id="email" placeholder="Informe seu E-mail" name="email" value="<?= $usuario['email'] ?>">
 					</div>
-				</div>
-        <div class="form-row">
-					<div class="form-group col-md-6">
+					<div class="form-group col-md-3">
 						<label for="i-nome">Senha</label>
 						<input type="password" class="form-control" id="senha" placeholder="Informe a Senha do Usuário" name="senha" value="<?= $usuario['senha'] ?>">
 					</div>

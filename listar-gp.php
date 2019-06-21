@@ -34,7 +34,7 @@
                 <td scope="col"><?= $gp['nome'] ?></td>
                 <?php if ($edit): ?>
 	                <td scope="col">
-	                	<a class="text-danger" href="editar-gp.php?id=<?= $gp['codGp'] ?>"><i class="fas fa-edit"></i></a> |
+	                	<a class="text-warning" href="editar-gp.php?id=<?= $gp['codGp'] ?>"><i class="fas fa-edit"></i></a> |
 	                	<a class="text-danger" href="deletar-gp.php?id=<?= $gp['codGp'] ?>"><i class="fas fa-trash"></i></a>
 	                </td>
                 <?php endif ?>

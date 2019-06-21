@@ -7,22 +7,22 @@
     <div class="container">
       <div class="row mt-5">
       	<div class="col-md-8">
-      		<h1>Equipes</h1>
+      		<h1>LISTAGEM DE EQUIPES</h1>
       	</div>
       	<?php if ($edit): ?>
 	      	<div class="col-md-4 text-right">
-	      		<a class="btn btn-danger" href="cadastrar-equipe.php"><i class="fa fa-plus"></i> Nova Equipe</a>
+	      		<a class="btn btn-danger" href="cadastrar-equipe.php"><i class="fa fa-plus"></i> NOVA EQUIPE</a>
 	      	</div>
       	<?php endif ?>
       </div>
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Equipes</th>
-            <th scope="col">Pais</th>
+            <th scope="col">COD</th>
+            <th scope="col">EQUIPES</th>
+            <th scope="col">PAÍS</th>
             <?php if ($edit): ?>
-            	<th scope="col">Ação</th>
+            	<th scope="col">AÇÃO</th>
             <?php endif ?>
           </tr>
         </thead>

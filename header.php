@@ -16,7 +16,7 @@
   <div class="jumbotron jumbotron-fluid mb-0 bg-danger text-white">
     <div class="container text-center">
       <h1 class="display-2 font-italic font-weight-bold"><strong> Fómula 1 </strong><i class="fas fa-tire fa-spin"></i></h1>
-      <p class="lead">Sistema de Gerenciamento de Grande Prêmios de Fórmula 1</p>
+      <p class="lead">Sistema de Gerenciamento de Grandes Prêmios de Fórmula 1</p>
     </div>
   </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">

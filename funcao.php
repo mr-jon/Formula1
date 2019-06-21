@@ -166,6 +166,7 @@
     $resultado = mysqli_query($conexao,
             "SELECT equipe.*, pais.nome as nome_pais, pais.codPais FROM equipe
             JOIN pais ON pais.codPais = equipe.codPais
+            ORDER BY codEquip
             ");
     $equipes = array();
     if ($resultado) {

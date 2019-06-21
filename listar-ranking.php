@@ -9,12 +9,17 @@
       	<div class="col-md-8">
       		<h1>RANKING GERAL</h1>
       	</div>
+        <?php if ($edit): ?>
+          <div class="col-md-4 text-right">
+            <a class="btn btn-danger" href="cadastrar-ptsgp.php"><i class="fa fa-plus"></i> Adicionar PTS</a>
+          </div>
+        <?php endif ?>
       </div>
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th scope="col">POS</th>
-            <th scope="col">NOME</th>
+            <th scope="col">PILOTO</th>
             <th scope="col">PAIS</th>
             <th scope="col">EQUIPE</th>
             <th scope="col">PTS</th>

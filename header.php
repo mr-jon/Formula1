@@ -29,8 +29,13 @@
             </li>
           <?php endif ?>
           <li class="nav-item active">
-            <a class="nav-link text-danger" href="listar-ranking.php">Ranking</a>
+            <a class="nav-link text-danger" href="listar-ranking.php">Ranking Geral</a>
           </li>
+          <?php if ($logado): ?>
+          <li class="nav-item active">
+            <a class="nav-link text-danger" href="listar-campeaoporgp.php">Ranking por GP's</a>
+          </li>
+          <?php endif ?>
           <li class="nav-item active">
             <a class="nav-link text-danger" href="listar-pilotos.php">Pilotos</a>
           </li>

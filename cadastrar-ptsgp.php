@@ -8,7 +8,7 @@
 	include_once "funcao.php";
 	$usuario = obterUsuarioByEmail($_SESSION['email']);
 
-
+	//var_dump($ptsGp);
 	if (!isset($ptsGp)) {
 	  $ptsGp = array();
 	  $ptsGp['codGp'] = 0;

@@ -100,7 +100,7 @@
             JOIN pais ON pais.codPais = piloto.codPais
             JOIN pilotogp ON pilotogp.codPiloto = piloto.codPiloto
             GROUP BY piloto.codPiloto
-            HAVING sum(pilotogp.pts)
+            -- HAVING sum(pilotogp.pts)
             ORDER BY pontos_piloto desc
             ");
     $pilotos = array();
@@ -115,7 +115,7 @@
 
   function obterPilotosRankingPorGP($gp) {
     $conexao = obterConexao();
-    $sql = "SELECT piloto.*, equipe.nome as equipe_nome1, pais.nome as pais_nome1, pilotogp.*, sum(pilotogp.pts) as pontos_piloto1 FROM piloto
+    $sql = "SELECT piloto.nome, equipe.nome as equipe_nome1, pais.nome as pais_nome1, sum(pilotogp.pts) as pontos_piloto1 FROM piloto
             JOIN equipe ON equipe.codEquip = piloto.codEquip
             JOIN pais ON pais.codPais = piloto.codPais
             JOIN pilotogp ON pilotogp.codPiloto = piloto.codPiloto
@@ -147,23 +147,6 @@
     return $piloto;
   }
 
-  function obterPilotoGPById($id, $id1) {
-    $conexao = obterConexao();
-    $sql = "select pilotogp.codGp, pilotogp.codPiloto, pilotogp.pts from pilotogp where codPiloto=? and codGp=?";
-    $sentenca = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param($sentenca, "ii", $id, $id1);
-    mysqli_stmt_execute($sentenca);
-    $resultado = mysqli_stmt_get_result($sentenca);
-    $ptsGp = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
-    mysqli_free_result($resultado);
-    mysqli_close($conexao);
-    //var_dump($ptsGp);
-    return $ptsGp;
-
-  }
-
-
   function obterUsuarioById($id) {
     $conexao = obterConexao();
     $sql = "select * from usuario where id=?";
@@ -188,16 +171,6 @@
     mysqli_close($conexao);
   }
 
-  function alterarPilotoGP($piloto) {
-    $conexao = obterConexao();
-    $sql = "update pilotogp set codPiloto=?, codEquip=?, pts=? where CodGp=?";
-    $sentenca = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param($sentenca, "iiii", $piloto['codPiloto'], $piloto['codEquip'], $piloto['pts'], $piloto['codGp']);
-    mysqli_stmt_execute($sentenca);
-    mysqli_close($conexao);
-  }
-
   function alterarUsuario($usuario) {
     $conexao = obterConexao();
     $sql = "update usuario set nome=?, email=?, senha=? where id=?";
@@ -216,16 +189,6 @@
     mysqli_stmt_execute($sentenca);
     mysqli_close($conexao);
   }
-
-  function removerPilotoGP($id, $id1) {
-    $conexao = obterConexao();
-    $sql = "delete from pilotogp where codPiloto=? and codGp=?";
-    $sentenca = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($sentenca, "ii", $id, $id1);
-    mysqli_stmt_execute($sentenca);
-    mysqli_close($conexao);
-  }
-
 
   function removerUsuario($id) {
     $conexao = obterConexao();

@@ -8,7 +8,6 @@
 	include_once "funcao.php";
 	$usuario = obterUsuarioByEmail($_SESSION['email']);
 
-
 	if (!isset($piloto)) {
 	  $piloto = array();
 	  $piloto['codPiloto'] = 0;

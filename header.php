@@ -8,6 +8,9 @@
     case '/formula1/listar-ranking.php':
       $activeRanking = "active";
       break;
+    case '/formula1/listar-campeaoporgp.php':
+      $activeCampeaoPorGp = "active";
+      break;
     case '/formula1/listar-pilotos.php':
       $activePilotos = "active";
       break;
@@ -59,9 +62,14 @@
             </li>
           <?php endif ?>
           <li class="nav-item <?= $activeRanking ?>">
-            <a class="nav-link" href="listar-ranking.php">Ranking</a>
+            <a class="nav-link" href="listar-ranking.php">Ranking Geral</a>
           </li>
-          <li class="nav-item <?= $activePilotos ?>">
+          <?php if ($logado): ?>
+          <li class="nav-item <?= $activeCampeaoPorGp ?>">
+            <a class="nav-link" href="listar-campeaoporgp.php">Ranking por GP's</a>
+          </li>
+          <?php endif ?>
+          <li class="nav-item <?= $activePiloto ?>">
             <a class="nav-link" href="listar-pilotos.php">Pilotos</a>
           </li>
           <li class="nav-item <?= $activeEquipes ?>">

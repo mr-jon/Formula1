@@ -9,7 +9,7 @@
   $usuario = obterUsuarioByEmail($_SESSION['email']);
 
   $piloto = obterPilotoById($_POST['codPiloto']);
-  
+
   $ptsGp = array();
   $ptsGp["codGp"] = $_POST["codGp"];
   $ptsGp["codPiloto"] = $_POST["codPiloto"];
@@ -29,7 +29,7 @@
     <?php
     include 'footer.php';
     // alterarPtsGp($ptsGp);
-  else: 
+  else:
     salvarPtsGp($ptsGp);
     header("location: listar-ranking.php");
   endif;

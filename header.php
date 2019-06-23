@@ -1,6 +1,29 @@
 <?php
- $logado = (isset($_SESSION['email'])) ? true : false;
- ?>
+  $logado = (isset($_SESSION['email'])) ? true : false;
+
+  switch ($_SERVER['REQUEST_URI']) {
+    case '/formula1/dashboard.php':
+      $activeDashboard = "active";
+      break;
+    case '/formula1/listar-ranking.php':
+      $activeRanking = "active";
+      break;
+    case '/formula1/listar-pilotos.php':
+      $activePilotos = "active";
+      break;
+    case '/formula1/listar-equipes.php':
+      $activeEquipes = "active";
+      break;
+    case '/formula1/listar-paises.php':
+      $activePaises = "active";
+      break;
+    case '/formula1/listar-gp.php':
+      $activeGps = "active";
+      break;
+    default:
+      break;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +34,13 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="css/pro.css">
 
+  <style type="text/css">
+    img{
+        height: 40vh;
+        object-fit: cover;
+    }
+  </style>
+
 </head>
 <body>
   <div class="jumbotron jumbotron-fluid mb-0 bg-danger text-white">
@@ -19,35 +49,35 @@
       <p class="lead">Sistema de Gerenciamento de Grandes Prêmios de Fórmula 1</p>
     </div>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <?php if ($logado): ?>
-            <li class="nav-item active">
-              <a class="nav-link text-danger" href="dashboard.php">Painel<span class="sr-only">(Página atual)</span></a>
+            <li class="nav-item  <?= $activeDashboard ?>">
+              <a class="nav-link" href="dashboard.php">Painel<span class="sr-only">(Página atual)</span></a>
             </li>
           <?php endif ?>
-          <li class="nav-item active">
-            <a class="nav-link text-danger" href="listar-ranking.php">Ranking</a>
+          <li class="nav-item <?= $activeRanking ?>">
+            <a class="nav-link" href="listar-ranking.php">Ranking</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link text-danger" href="listar-pilotos.php">Pilotos</a>
+          <li class="nav-item <?= $activePilotos ?>">
+            <a class="nav-link" href="listar-pilotos.php">Pilotos</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link text-danger" href="listar-equipes.php">Equipes</a>
+          <li class="nav-item <?= $activeEquipes ?>">
+            <a class="nav-link" href="listar-equipes.php">Equipes</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link text-danger" href="listar-paises.php">Países</a>
+          <li class="nav-item <?= $activePaises ?>">
+            <a class="nav-link" href="listar-paises.php">Países</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link text-danger" href="listar-gp.php">GP's</a>
+          <li class="nav-item <?= $activeGps ?>">
+            <a class="nav-link" href="listar-gp.php">GP's</a>
           </li>
         </ul>
 				<?php if ($logado): ?>
-						<a class="nav-link text-danger" href="logout.php">Logout <i class="fas fa-sign-in-alt"></i></a>
+						<a class="nav-link text-light" href="logout.php">Logout <i class="fas fa-sign-in-alt"></i></a>
 				<?php else: ?>
-        		<a class="nav-link text-danger" href="login.php">Login</a>
+        		<a class="nav-link text-light" href="login.php">Login</a>
 				<?php endif; ?>
       </div>
     </div>

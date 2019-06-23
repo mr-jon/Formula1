@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row mt-5">
       	<div class="col-md-8">
-      		<h1>LISTAGEM DE PILOTOS</h1>
+      		<h1>PILOTOS</h1>
       	</div>
       	<?php if ($edit): ?>
 	      	<div class="col-md-4 text-right">

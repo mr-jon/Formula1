@@ -1,9 +1,8 @@
-		<div class="mt-5 mb-5 pt-5 pb-5"></div>
-		<footer class="text-muted bg-dark p-4 fixed-bottom">
+		<footer class="text-muted text-center bg-dark p-3">
 			<div class="container">
-				<p>Desenvolvido por: Jeffery Ornellas Nogueira e Leandro Peralta</p>
-				<p>Professor: Marcio Osshiro</p>
-				<p>Instituto Federal de Matogrosso do Sul - <?= date('Y') ?></p>
+				<p>Desenvolvido por: Jeffery Ornellas Nogueira e Leandro Peralta
+                <br>Professor: Marcio Osshiro
+                <br>Instituto Federal de Matogrosso do Sul - <?= date('Y') ?></p>
 			</div>
 		</footer>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

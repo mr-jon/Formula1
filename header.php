@@ -42,6 +42,9 @@
             height: calc(100vh - 463px);
             object-fit: cover;
         }
+        .container:nth-of-type(2){
+            min-height: calc(100vh - 463px);
+        }
     </style>
 
 </head>

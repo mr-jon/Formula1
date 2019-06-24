@@ -39,6 +39,7 @@
 							<?php endforeach ?>
 						</select>
 					</div>
+                </div>
 				<button type="submit" class="btn btn-lg btn-block btn-danger">Listar Posição por GP</button>
 			</form>
 		</div>

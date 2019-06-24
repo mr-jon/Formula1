@@ -2,7 +2,7 @@
 			<div class="container">
 				<p>Desenvolvido por: Jeffery Ornellas Nogueira e Leandro Peralta
                 <br>Professor: Marcio Osshiro
-                <br>Instituto Federal de Matogrosso do Sul - <?= date('Y') ?></p>
+                <br>Instituto Federal de Mato Grosso do Sul - <?= date('Y') ?></p>
 			</div>
 		</footer>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

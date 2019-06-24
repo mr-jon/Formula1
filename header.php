@@ -44,6 +44,7 @@
         }
         .container:nth-of-type(2){
             min-height: calc(100vh - 463px);
+            margin-bottom: 50px;
         }
     </style>
 

@@ -58,10 +58,13 @@
   </div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+    </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <?php if ($logado): ?>
-            <li class="nav-item  <?= $activeDashboard ?>">
+            <li class="nav-item <?= $activeDashboard ?>">
               <a class="nav-link" href="dashboard.php">Painel<span class="sr-only">(Página atual)</span></a>
             </li>
           <?php endif ?>
